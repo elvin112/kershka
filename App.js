@@ -1,5 +1,5 @@
-
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Provider } from "react-redux";
@@ -19,21 +19,24 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <SafeAreaView style={styles.rootContainer}>
-      <Provider store={store}>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: false,
-              // tabBarShowLabel: false,
-            }}
-          >
-            <Tab.Screen name="WelcomeScreen" component={WelcomeScreen} />
-            <Tab.Screen name="SearchScreen" component={SearchScreen} />
-            <Tab.Screen name="BasketScreen" component={BasketScreen} />
-            <Tab.Screen name="FavouritesScreen" component={FavouritesScreen} />
-            <Tab.Screen name="AccountScreen" component={AccountScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={{
+                headerShown: false,
+                // tabBarShowLabel: false,
+              }}
+            >
+              <Tab.Screen name="WelcomeScreen" component={WelcomeScreen} />
+              <Tab.Screen name="SearchScreen" component={SearchScreen} />
+              <Tab.Screen name="BasketScreen" component={BasketScreen} />
+              <Tab.Screen
+                name="FavouritesScreen"
+                component={FavouritesScreen}
+              />
+              <Tab.Screen name="AccountScreen" component={AccountScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
         </Provider>
       </SafeAreaView>
     </>
