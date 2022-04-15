@@ -1,8 +1,10 @@
-import { StatusBar } from "expo-status-bar";
+
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Provider } from "react-redux";
 
+import store from "./store/store";
 import { Colors } from "./constants/colors";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import SearchScreen from "./screens/SearchScreen";
@@ -17,6 +19,7 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <SafeAreaView style={styles.rootContainer}>
+      <Provider store={store}>
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={{
@@ -31,6 +34,7 @@ export default function App() {
             <Tab.Screen name="AccountScreen" component={AccountScreen} />
           </Tab.Navigator>
         </NavigationContainer>
+        </Provider>
       </SafeAreaView>
     </>
   );
