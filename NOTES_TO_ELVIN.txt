@@ -1,0 +1,17 @@
+I implemented and tested favorites and basket slice but I couldn't test the authSlice, 
+it must be tested after creation of auth operations.
+
+Because of we are allowing users to put an item to the favorites or basket,
+I implemented Async storage for these operations, when implementing favoritesScreen and basketScreen,
+First you must check if there is an item in AsyncStorage then move on to the application.
+It is just like how we stored and retrived authentication tokens
+The difference between auth tokens and favorite items/basket items is,
+In favorite items we store Json stringified arrays, we have to do it because Async Storage doesn't allow to store,
+Data types other than strings.
+So when you will read this data use JSON.parse
+I implemented them in the test files you can check them
+More information: https://react-native-async-storage.github.io/async-storage/docs/api
+
+In firebase authTokens expire after an hour therefore I implemented an expirationDate field to state and to AsyncStorage
+You must either automatically log out the user after expiration time or send a request to refresh token api end point
+Refresh token api endpoint would be better for user experience.
