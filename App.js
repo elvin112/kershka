@@ -17,7 +17,6 @@ import {
   Poppins_600SemiBold,
 } from "@expo-google-fonts/poppins";
 
-
 import store from "./store/store";
 import { Colors } from "./constants/colors";
 import WelcomeScreen from "./screens/WelcomeScreen";
@@ -40,13 +39,20 @@ export default function App() {
     return <AppLoading />;
   }
 
+  const myTheme = {
+    colors: {
+      backgroundColor: Colors.primary100,
+    },
+  };
+
   return (
     <>
       <StatusBar style="auto" />
       <SafeAreaView style={styles.rootContainer}>
         <Provider store={store}>
-          <NavigationContainer>
+          <NavigationContainer theme={myTheme}>
             <Tab.Navigator
+              style={styles.navigationContainer}
               screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
@@ -118,6 +124,9 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     flexDirection: "column",
+    backgroundColor: Colors.primary100,
+  },
+  navigationContainer: {
     backgroundColor: Colors.primary100,
   },
   tapEffect: {
