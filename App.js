@@ -39,13 +39,20 @@ export default function App() {
     return <AppLoading />;
   }
 
+  const myTheme = {
+    colors: {
+      backgroundColor: Colors.primary100,
+    },
+  };
+
   return (
     <>
       <StatusBar style="auto" />
       <SafeAreaView style={styles.rootContainer}>
         <Provider store={store}>
-          <NavigationContainer>
+          <NavigationContainer theme={myTheme}>
             <Tab.Navigator
+              style={styles.navigationContainer}
               screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
@@ -119,4 +126,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: Colors.primary100,
   },
+
+  navigationContainer: {
+    backgroundColor: Colors.primary100,
+  },
+  tapEffect: {
+    opacity: 0.8,
+  },
+
 });

@@ -1,9 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
+import SearchBar from "../components/ui/SearchBar";
+import SearchContent from "../components/SearchComponents/SearchContent";
+import { Colors } from "../constants/colors";
+import { sizes } from "../constants/sizes";
 
 function SearchScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.fontsTest}>This is Search Screen</Text>
+      <SearchBar />
+      <SearchContent />
     </View>
   );
 }
@@ -13,10 +18,6 @@ export default SearchScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 27,
-  },
-  fontsTest: {
-    fontFamily: "Poppins_300Light",
-    fontSize: 100,
+    marginHorizontal: sizes.screenPadding,
   },
 });
