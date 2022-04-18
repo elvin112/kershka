@@ -17,7 +17,6 @@ import {
   Poppins_600SemiBold,
 } from "@expo-google-fonts/poppins";
 
-
 import store from "./store/store";
 import { Colors } from "./constants/colors";
 import WelcomeScreen from "./screens/WelcomeScreen";
@@ -119,8 +118,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.primary100,
-  },
-  tapEffect: {
-    opacity: 0.8,
   },
 });
