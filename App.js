@@ -126,10 +126,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: Colors.primary100,
   },
+
   navigationContainer: {
     backgroundColor: Colors.primary100,
   },
   tapEffect: {
     opacity: 0.8,
   },
+
 });
