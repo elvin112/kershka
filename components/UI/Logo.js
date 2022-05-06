@@ -14,6 +14,5 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "Poppins_400Regular",
     fontSize: 18,
-    marginLeft: 30,
   },
 });

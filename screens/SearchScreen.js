@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import SearchBar from "../components/ui/SearchBar";
+import SearchBar from "../components/UI/SearchBar";
 import SearchContent from "../components/SearchComponents/SearchContent";
 import { Colors } from "../constants/colors";
 import { sizes } from "../constants/sizes";
