@@ -2,7 +2,7 @@ import { View, StyleSheet, Text, Pressable } from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
 
-function SearchBarUIHome({ onPress }) {
+function SearchBar({ onPress }) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <AntDesign name="search1" size={22} color="black" />
@@ -11,7 +11,7 @@ function SearchBarUIHome({ onPress }) {
   );
 }
 
-export default SearchBarUIHome;
+export default SearchBar;
 
 const styles = StyleSheet.create({
   container: {

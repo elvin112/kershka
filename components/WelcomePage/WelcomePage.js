@@ -2,8 +2,9 @@ import { Text, View, StyleSheet } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
 
 import Logo from "../UI/Logo";
-import SearchBarUIHome from "./SearchBarUIHome";
+import SearchBar from "./SearchBar";
 import { DUMMY_IMAGES } from "../../constants/DUMMY_DATA";
+import { sizes } from "../../constants/sizes";
 
 function WelcomePage({ navigation }) {
   function searchBarHandler() {
@@ -19,12 +20,13 @@ function WelcomePage({ navigation }) {
           sliderBoxHeight={"100%"}
           autoplay
           circleLoop
+          removeClippedSubviews={false}
         />
       </View>
       <View style={styles.container}>
         <View style={styles.title}>
           <Logo />
-          <SearchBarUIHome onPress={searchBarHandler} />
+          <SearchBar onPress={searchBarHandler} />
         </View>
       </View>
     </View>
@@ -48,8 +50,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   dotStyle: {
-    width: 0,
-    height: 0,
+    width: 16,
+    height: 8,
   },
   container: {
     flex: 1,
@@ -60,5 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 15,
+    marginLeft: sizes.screenPadding,
   },
 });

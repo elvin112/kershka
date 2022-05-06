@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import WelcomePage from "../components/WelcomePage/WelcomePage";
 import SearchPage from "../components/WelcomePage/SearchPage";
+import { sizes } from "../constants/sizes";
 
 const Stack = createNativeStackNavigator();
 

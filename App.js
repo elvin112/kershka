@@ -133,5 +133,4 @@ const styles = StyleSheet.create({
   tapEffect: {
     opacity: 0.8,
   },
-
 });
