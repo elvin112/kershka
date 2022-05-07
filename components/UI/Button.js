@@ -15,6 +15,7 @@ export default Button;
 const styles = StyleSheet.create({
   btnContainer: {
     width: "100%",
+    maxHeight: 38,
     backgroundColor: "#3D3B3B",
   },
   text: {

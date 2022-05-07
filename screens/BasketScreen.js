@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 
 import Title from "../components/UI/Title";
 import { sizes } from "../constants/sizes";
-import EmptyBasketImg from "../components/UI/SvgImage/EmptyBasketImg";
+import EmptyBasketSvg from "../components/UI/Basket/EmptyBasketSvg";
 import Button from "../components/UI/Button";
 
 function BasketScreen() {
@@ -10,7 +10,7 @@ function BasketScreen() {
     <View style={styles.container}>
       <Title style={styles.titleStyle} name="My basket" />
       <View style={styles.innerContainer}>
-        <EmptyBasketImg />
+        <EmptyBasketSvg />
         <View style={styles.emptyBasketImg}></View>
         <Title style={styles.infoTitle} name="Empty Basket" />
         <Text style={styles.infoDescription}>
@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     marginBottom: "6%",
   },
   buttonText: {
-    fontSize: 22,
+    fontSize: 21,
   },
 });
