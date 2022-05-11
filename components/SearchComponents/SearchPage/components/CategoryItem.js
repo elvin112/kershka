@@ -3,29 +3,30 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
-// TODO: Make list items pressable and collapsable
-
 const CategoryItem = ({ category, subCategories, active, fetchedData }) => {
   const [isExposed, setIsExposed] = useState(false);
   const navigation = useNavigation();
 
   const topCategoryOnPressHandler = () => {
     setIsExposed((state) => !state);
-    if (!subCategories)
+    if (!subCategories) {
+      const items = fetchedData[category];
+
       navigation.navigate("ItemsPage", {
-        category: category,
-        subCategory: null,
-        gender: active ? "men" : "women",
-        fetchedData: fetchedData,
+        title: category,
+        items: items,
+        gender: active ? "women" : "men",
       });
+    }
   };
 
   const subCategoryOnPressHandler = (subCategory) => {
+    const items = fetchedData[category][subCategory];
+
     navigation.navigate("ItemsPage", {
-      category: category,
-      subCategory: subCategory,
-      gender: active ? "men" : "women",
-      fetchedData: fetchedData,
+      title: subCategory,
+      items: items,
+      gender: active ? "women" : "men",
     });
   };
 

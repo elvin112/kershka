@@ -2,8 +2,6 @@ import { StyleSheet, Text, View, FlatList } from "react-native";
 import CategoryItem from "./CategoryItem";
 
 const SearchCategories = ({ categories, fetchedData, active }) => {
-  console.log(categories);
-
   const flatListRenderHandler = (itemData) => {
     let subCategories;
     if (itemData.item.subCategories) {
