@@ -8,7 +8,7 @@ const SearchBar = () => {
     <View style={styles.bigContainer}>
       <Pressable
         onPress={() => {
-          console.log("search bar clicked");
+          console.log("search bar in the search screen clicked");
         }}
         style={({ pressed }) => [
           { opacity: pressed ? 0.5 : 1 },

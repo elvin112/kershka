@@ -1,23 +1,22 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, StyleSheet } from "react-native";
-import SearchBar from "../components/UI/SearchBar";
-import SearchContent from "../components/SearchComponents/SearchContent";
-import { Colors } from "../constants/colors";
-import { sizes } from "../constants/sizes";
 
-function SearchScreen() {
+import SearchPage from "../components/SearchComponents/SearchPage/SearchPage";
+import ItemsPage from "../components/SearchComponents/ItemsPage/ItemsPage";
+import ItemPage from "../components/SearchComponents/ItemPage/ItemPage";
+
+const SearchScreen = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <SearchBar />
-      <SearchContent />
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SearchPage" component={SearchPage} />
+      <Stack.Screen name="ItemsPage" component={ItemsPage} />
+      <Stack.Screen name="ItemPage" component={ItemPage} />
+    </Stack.Navigator>
   );
-}
+};
 
 export default SearchScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginHorizontal: sizes.screenPadding,
-  },
-});
+const styles = StyleSheet.create({});
