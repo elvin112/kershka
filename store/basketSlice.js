@@ -21,6 +21,5 @@ export const basketSlice = createSlice({
   },
 });
 
-export const { addToBasket, removeFromBasket, fetchFromAsyncStorage } =
-  basketSlice.actions;
+export const basketActions = basketSlice.actions;
 export default basketSlice.reducer;

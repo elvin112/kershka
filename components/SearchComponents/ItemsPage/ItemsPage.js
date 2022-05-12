@@ -6,12 +6,12 @@ import {
   Pressable,
   Platform,
   FlatList,
-  Image,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
 import { sizes } from "../../../constants/sizes";
+import GridItem from "./components/GridItem";
 
 const ItemsPage = () => {
   const navigation = useNavigation();
@@ -47,33 +47,7 @@ const ItemsPage = () => {
   }, []);
 
   const renderItemHandler = (item) => {
-    return (
-      <View
-        style={[styles.itemContainer, item.index % 2 === 0 ? styles.odd : null]}
-        key={item.item.name}
-      >
-        <Pressable
-          android_ripple={{ color: "#ccc" }}
-          style={({ pressed }) => [
-            styles.button,
-            pressed ? styles.buttonPressed : null,
-          ]}
-        >
-          <View style={styles.imageContainer}>
-            <Image style={styles.image} source={{ uri: item.item.image }} />
-          </View>
-          <View style={styles.itemTitleAndIconContainer}>
-            <View style={styles.itemTitleContainer}>
-              <Text>{item.item.name}</Text>
-            </View>
-            <View style={styles.iconContainer}>
-              <AntDesign name="hearto" size={12} color="black" />
-            </View>
-          </View>
-          <Text>{item.item.price} PLN</Text>
-        </Pressable>
-      </View>
-    );
+    return <GridItem item={item} />;
   };
 
   return (
@@ -112,36 +86,5 @@ const styles = StyleSheet.create({
   },
   itemsContainer: {
     flex: 1,
-  },
-  itemContainer: {
-    flex: 1,
-  },
-  odd: {
-    marginRight: 8,
-  },
-  button: {
-    flex: 1,
-  },
-  buttonPressed: {
-    opacity: 0.5,
-  },
-  imageContainer: {
-    height: 240,
-  },
-  image: {
-    flex: 1,
-  },
-  itemTitleAndIconContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flex: 1,
-  },
-  itemTitleContainer: {
-    width: "90%",
-  },
-
-  iconContainer: {
-    width: "10%",
   },
 });

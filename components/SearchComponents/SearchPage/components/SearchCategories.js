@@ -10,7 +10,7 @@ const SearchCategories = ({ categories, fetchedData, active }) => {
 
     return (
       <CategoryItem
-        key={itemData.item.category}
+        key={Math.random()}
         category={itemData.item.category}
         subCategories={itemData.item.subCategories}
         fetchedData={fetchedData}
