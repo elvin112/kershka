@@ -20,13 +20,20 @@ function SearchPage() {
       const topCategories = Object.keys(expenses.data);
 
       let tempSubCategories;
+      let counter = 0;
       const orderedCategories = topCategories.map((category) => {
         tempSubCategories = Object.keys(expenses.data[category]);
 
         if (tempSubCategories[0] === "0") {
-          return { category: category, subCategories: null };
+          counter++;
+          return { category: category, subCategories: null, id: counter };
         } else {
-          return { category: category, subCategories: tempSubCategories };
+          counter++;
+          return {
+            category: category,
+            subCategories: tempSubCategories,
+            id: counter,
+          };
         }
       });
 

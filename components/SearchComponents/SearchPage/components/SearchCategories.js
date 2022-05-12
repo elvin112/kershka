@@ -3,16 +3,15 @@ import CategoryItem from "./CategoryItem";
 
 const SearchCategories = ({ categories, fetchedData, active }) => {
   const flatListRenderHandler = (itemData) => {
-    let subCategories;
+    let subCategories = null;
     if (itemData.item.subCategories) {
       subCategories = itemData.item.subCategories;
     }
 
     return (
       <CategoryItem
-        key={Math.random()}
         category={itemData.item.category}
-        subCategories={itemData.item.subCategories}
+        subCategories={subCategories}
         fetchedData={fetchedData}
         active={active}
       />
@@ -24,7 +23,7 @@ const SearchCategories = ({ categories, fetchedData, active }) => {
       <FlatList
         data={categories}
         renderItem={flatListRenderHandler}
-        keyExtractor={(item) => item.category}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
