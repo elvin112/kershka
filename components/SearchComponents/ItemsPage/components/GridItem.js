@@ -1,9 +1,16 @@
+import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
+import { favoritesActions } from "../../../../store/favoritesSlice";
+
 const GridItem = ({ item }) => {
+  const [isFav, setIsFav] = useState(false);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const favoritesState = useSelector((state) => state.favorites);
 
   const itemOnPressHandler = () => {
     navigation.navigate("ItemPage", {
@@ -12,6 +19,38 @@ const GridItem = ({ item }) => {
       image: item.item.image,
     });
   };
+
+  const addToFavoritesHandler = () => {
+    const foundFavorite = favoritesState.find(
+      (favorite) => favorite.name === item.item.name
+    );
+
+    if (!foundFavorite) {
+      dispatch(
+        favoritesActions.addToFavorites({
+          name: item.item.name,
+          price: item.item.price,
+          image: item.item.image,
+        })
+      );
+      setIsFav((state) => !state);
+    } else {
+      dispatch(favoritesActions.removeFromFavorites({ name: item.item.name }));
+      setIsFav((state) => !state);
+    }
+  };
+
+  useEffect(() => {
+    const foundFavorite = favoritesState.find(
+      (favorite) => favorite.name === item.item.name
+    );
+
+    if (!foundFavorite) {
+      setIsFav(false);
+    } else {
+      setIsFav(true);
+    }
+  });
 
   return (
     <View
@@ -34,7 +73,13 @@ const GridItem = ({ item }) => {
             <Text>{item.item.name}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <AntDesign name="hearto" size={12} color="black" />
+            <Pressable onPress={addToFavoritesHandler}>
+              {isFav ? (
+                <AntDesign name="heart" size={12} color="red" />
+              ) : (
+                <AntDesign name="hearto" size={12} color="black" />
+              )}
+            </Pressable>
           </View>
         </View>
         <Text>{item.item.price} PLN</Text>

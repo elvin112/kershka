@@ -33,6 +33,7 @@ const CategoryItem = ({ category, subCategories, active, fetchedData }) => {
   const subCategoryHandler = (subCategory) => {
     return (
       <View
+        key={Math.random()}
         style={[
           styles.subCategoryContainer,
           { display: isExposed ? "flex" : "none" },
