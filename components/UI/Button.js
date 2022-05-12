@@ -2,9 +2,9 @@ import { Pressable, Text, StyleSheet } from "react-native";
 
 import { Colors } from "../../constants/colors";
 
-function Button({ name, style }) {
+function Button({ name, style, onPress }) {
   return (
-    <Pressable style={styles.btnContainer}>
+    <Pressable style={styles.btnContainer} onPress={onPress}>
       <Text style={[styles.text, style]}>{name}</Text>
     </Pressable>
   );

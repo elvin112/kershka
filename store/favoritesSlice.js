@@ -10,7 +10,7 @@ export const favoritesSlice = createSlice({
       AsyncStorage.setItem("favorites", JSON.stringify(state));
     },
     removeFromFavorites: (state, { payload }) => {
-      const idx = state.findIndex((item) => item === payload);
+      const idx = state.findIndex((item) => item.name === payload.name);
       state.splice(idx, 1);
       AsyncStorage.setItem("favorites", JSON.stringify(state));
     },
@@ -21,6 +21,5 @@ export const favoritesSlice = createSlice({
   },
 });
 
-export const { addToFavorites, removeFromFavorites, fetchFromAsyncStorage } =
-  favoritesSlice.actions;
+export const favoritesActions = favoritesSlice.actions;
 export default favoritesSlice.reducer;
