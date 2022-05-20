@@ -1,24 +1,79 @@
-import { View, Text, StyleSheet } from "react-native";
+import { useEffect, useLayoutEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  FlatList,
+} from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import SnackBar from "react-native-snackbar-component";
 
+import { favoritesActions } from "../store/favoritesSlice";
 import Title from "../components/UI/Title";
 import { sizes } from "../constants/sizes";
-import EmptyFavoriteSvg from "../components/UI/Favorites/EmptyFavoriteSvg";
 import Button from "../components/UI/Button";
+import EmptyFavorite from "../components/UI/Favorites/EmptyFavorite";
+import FavoriteItem from "../components/UI/Favorites/FavoriteItem";
 
 function FavouritesScreen() {
-  return (
-    <View style={styles.container}>
-      <Title style={styles.titleStyle} name="My favourites" />
-      <View style={styles.innerContainer}>
-        <EmptyFavoriteSvg />
-        <View style={styles.emptyBasketImg}></View>
-        <Title style={styles.infoTitle} name="You don't have any favourites" />
-        <Text style={styles.infoDescription}>
-          Did you know we update our collection every week?
-        </Text>
-        <Button name="SEE WHAT’S NEW" style={styles.buttonText} />
-      </View>
+  const [snackbarEnabled, setSnackbarEnabled] = useState(false);
+  const favoritesState = useSelector((state) => state.favorites);
+
+  function snackBarHandler() {
+    setSnackbarEnabled((current) => !current);
+    setTimeout(() => {
+      setSnackbarEnabled((current) => !current);
+    }, 1000);
+  }
+  const renderItem = ({ item }) => (
+    <FavoriteItem
+      image={item.image}
+      name={item.name}
+      price={item.price}
+      onSnackbar={snackBarHandler}
+    />
+  );
+
+  let content = (
+    <View style={styles.innerContainer}>
+      <ActivityIndicator size="large" color="#000000" />;
     </View>
+  );
+
+  if (favoritesState) {
+    const favoritedItems = favoritesState;
+    if (favoritedItems.length > 0) {
+      content = (
+        <FlatList
+          data={favoritedItems}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.image}
+        />
+      );
+    } else {
+      content = (
+        <View style={styles.innerContainer}>
+          <EmptyFavorite />
+        </View>
+      );
+    }
+  }
+
+  return (
+    <>
+      <View style={styles.container}>
+        <Title style={styles.titleStyle} name="My favourites" />
+        {content}
+      </View>
+      <SnackBar
+        visible={snackbarEnabled}
+        textMessage="Item removed"
+        backgroundColor="#1DA1F2"
+        containerStyle={{ height: 45 }}
+        position="bottom"
+      />
+    </>
   );
 }
 
@@ -30,32 +85,16 @@ const styles = StyleSheet.create({
     marginTop: 27,
     marginHorizontal: sizes.screenPadding,
   },
+  innerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   titleStyle: {
     fontSize: 24,
     fontFamily: "Poppins_600SemiBold",
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 15,
-  },
-  innerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: "-29%",
-  },
-  infoTitle: {
-    marginTop: "4%",
-    fontSize: 18,
-    fontFamily: "Poppins_600SemiBold",
-  },
-  infoDescription: {
-    fontFamily: "Poppins_400Regular",
-    fontSize: 14,
-    width: "70%",
-    textAlign: "center",
-    marginBottom: "6%",
-  },
-  buttonText: {
-    fontSize: 21,
   },
 });
