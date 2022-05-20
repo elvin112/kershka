@@ -1,15 +1,25 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 import { AntDesign } from "@expo/vector-icons";
 import { favoritesActions } from "../../../store/favoritesSlice";
 
 function FavoriteItem({ image, name, price, onSnackbar }) {
   const [isFav, setIsFav] = useState(true);
+  const navigation = useNavigation();
 
   const dispatch = useDispatch();
   const favoritesState = useSelector((state) => state.favorites);
+
+  function viewItemHandler() {
+    navigation.navigate("ItemPage", {
+      name: name,
+      price: price,
+      image: image,
+    });
+  }
 
   const removeFromFavoritesHandler = () => {
     const foundFavorite = favoritesState.find(
@@ -23,12 +33,12 @@ function FavoriteItem({ image, name, price, onSnackbar }) {
       const identifier = setTimeout(() => {
         dispatch(favoritesActions.removeFromFavorites({ name }));
       }, 1000);
-      onSnackbar();
+      onSnackbar(identifier);
     }
   };
 
   return (
-    <>
+    <Pressable onPress={viewItemHandler}>
       <View style={styles.innerContainer}>
         <Image style={styles.imgSize} source={{ uri: image }} />
         <View style={styles.infoContainer}>
@@ -43,7 +53,7 @@ function FavoriteItem({ image, name, price, onSnackbar }) {
           )}
         </Pressable>
       </View>
-    </>
+    </Pressable>
   );
 }
 

@@ -19,12 +19,18 @@ import FavoriteItem from "../components/UI/Favorites/FavoriteItem";
 function FavouritesScreen() {
   const [snackbarEnabled, setSnackbarEnabled] = useState(false);
   const favoritesState = useSelector((state) => state.favorites);
+  const [itemCount, setItemCount] = useState(0);
+
+  useEffect(() => {
+    const favoritedItemLength = favoritesState.length;
+    setItemCount(favoritedItemLength);
+  });
 
   function snackBarHandler() {
     setSnackbarEnabled((current) => !current);
     setTimeout(() => {
       setSnackbarEnabled((current) => !current);
-    }, 1000);
+    }, 1300);
   }
   const renderItem = ({ item }) => (
     <FavoriteItem
@@ -63,7 +69,11 @@ function FavouritesScreen() {
   return (
     <>
       <View style={styles.container}>
-        <Title style={styles.titleStyle} name="My favourites" />
+        <Title
+          style={styles.titleStyle}
+          name="My favourites"
+          itemSize={itemCount}
+        />
         {content}
       </View>
       <SnackBar
