@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../components/UI/Title";
 import { sizes } from "../constants/sizes";
@@ -6,6 +7,8 @@ import EmptyBasketSvg from "../components/UI/Basket/EmptyBasketSvg";
 import Button from "../components/UI/Button";
 
 function BasketScreen() {
+  const basketState = useSelector((state) => state.basket);
+
   return (
     <View style={styles.container}>
       <Title style={styles.titleStyle} name="My basket" />

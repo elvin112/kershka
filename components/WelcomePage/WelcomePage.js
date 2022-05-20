@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { SliderBox } from "react-native-image-slider-box";
 
