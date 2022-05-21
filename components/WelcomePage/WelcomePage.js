@@ -14,17 +14,17 @@ function WelcomePage({ navigation }) {
 
   return (
     <View style={styles.rootContainer}>
-      <View style={styles.slider}>
-        <SliderBox
-          images={DUMMY_IMAGES}
-          dotStyle={styles.dotStyle}
-          sliderBoxHeight={"100%"}
-          autoplay
-          circleLoop
-          removeClippedSubviews={false}
-        />
-      </View>
       <View style={styles.container}>
+        <View style={styles.slider}>
+          <SliderBox
+            images={DUMMY_IMAGES}
+            dotStyle={styles.dotStyle}
+            sliderBoxHeight={"100%"}
+            autoplay
+            circleLoop
+            removeClippedSubviews={false}
+          />
+        </View>
         <View style={styles.title}>
           <Logo />
           <SearchBar onPress={searchBarHandler} />
