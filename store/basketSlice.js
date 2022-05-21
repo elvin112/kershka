@@ -10,7 +10,7 @@ export const basketSlice = createSlice({
       AsyncStorage.setItem("basket", JSON.stringify(state));
     },
     removeFromBasket: (state, { payload }) => {
-      const idx = state.findIndex((item) => item === payload);
+      const idx = state.findIndex((item) => item.name === payload.name);
       state.splice(idx, 1);
       AsyncStorage.setItem("basket", JSON.stringify(state));
     },

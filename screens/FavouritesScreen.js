@@ -13,8 +13,8 @@ import { favoritesActions } from "../store/favoritesSlice";
 import Title from "../components/UI/Title";
 import { sizes } from "../constants/sizes";
 import Button from "../components/UI/Button";
-import EmptyFavorite from "../components/UI/Favorites/EmptyFavorite";
-import FavoriteItem from "../components/UI/Favorites/FavoriteItem";
+import EmptyFavorite from "../components/Favorites/EmptyFavorite";
+import FavoriteItem from "../components/Favorites/FavoriteItem";
 
 function FavouritesScreen() {
   const [snackbarEnabled, setSnackbarEnabled] = useState(false);
@@ -24,7 +24,7 @@ function FavouritesScreen() {
   useEffect(() => {
     const favoritedItemLength = favoritesState.length;
     setItemCount(favoritedItemLength);
-  });
+  }, [favoritesState]);
 
   function snackBarHandler() {
     setSnackbarEnabled((current) => !current);

@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 
 import EmptyFavoriteSvg from "./EmptyFavoriteSvg";
-import Button from "../../UI/Button";
-import Title from "../Title";
+import Button from "../UI/Button";
+import Title from "../UI/Title";
 
 function EmptyFavorite() {
   return (
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     marginTop: "-29%",
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
   },
   infoTitle: {
     marginTop: "4%",
@@ -39,6 +40,6 @@ const styles = StyleSheet.create({
     marginBottom: "6%",
   },
   buttonText: {
-    fontSize: 21,
+    fontSize: 19,
   },
 });

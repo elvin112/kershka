@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-
 import { AntDesign } from "@expo/vector-icons";
-import { favoritesActions } from "../../../store/favoritesSlice";
+
+import { favoritesActions } from "../../store/favoritesSlice";
 
 function FavoriteItem({ image, name, price, onSnackbar }) {
   const [isFav, setIsFav] = useState(true);
