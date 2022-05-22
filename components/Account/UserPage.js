@@ -1,61 +1,41 @@
 import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
-import { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
-import LoginSvg from "./LoginSvg";
 import Title from "../UI/Title";
-import Button from "../UI/Button";
 
-function LoginSignupPage() {
+function UserPage() {
   const navigation = useNavigation();
-
-  function signInWithEmailHandler() {
-    navigation.navigate("LoginWithEmailPage");
-  }
 
   return (
     <View style={styles.container}>
-      <LoginSvg />
       <View style={styles.titleContainer}>
-        <Title style={styles.infoTitle} name="Log in or create an account" />
+        <Title style={styles.infoTitle} name="Hi" />
+        <Text style={styles.subTitle}>dasdemirovelvin@gmail.com</Text>
+      </View>
+      <View style={styles.userSettingsContainer}>
+        <Pressable style={styles.option}>
+          <Ionicons name="basket" size={37} color="green" />
+          <Text style={styles.optionTxt}>My orders</Text>
+        </Pressable>
+        <Pressable style={styles.option}>
+          <MaterialIcons name="account-circle" size={37} color="red" />
+          <Text style={styles.optionTxt}>Personal details and addresses</Text>
+        </Pressable>
       </View>
 
-      <View style={styles.btnContainer}>
-        <Button
-          name="Continue with email"
-          style={styles.buttonText}
-          onPress={signInWithEmailHandler}
-          icon={
-            <MaterialCommunityIcons
-              name="email-outline"
-              size={24}
-              color="white"
-            />
-          }
-        />
-      </View>
-      <View style={styles.btnContainer}>
-        <Button
-          name="Continue with Facebook"
-          style={styles.buttonText}
-          onPress={{}}
-          containerStyle={styles.facebookBtnContainer}
-          icon={
-            <MaterialCommunityIcons name="facebook" size={24} color="white" />
-          }
-        />
-      </View>
-      <Text style={styles.signInfo}>
-        By logging/signing in with my socia login, I agree to cobbect my account
-        in accordance with the{" "}
-        <Text style={{ fontWeight: "bold" }}>Privacy Policy</Text>
-      </Text>
       <ScrollView style={styles.optionsContainer}>
         <Pressable style={styles.option}>
+          <FontAwesome name="envelope-o" size={24} color="black" />
+          <Text style={styles.optionTxt}>Inbox</Text>
+        </Pressable>
+        <Pressable style={styles.option}>
           <Feather name="help-circle" size={24} color="black" />
-          <Text style={styles.optionTxt}>Shopping guide</Text>
+          <Text style={styles.optionTxt}>Help</Text>
         </Pressable>
         <Pressable style={styles.option}>
           <Feather name="info" size={24} color="black" />
@@ -69,12 +49,16 @@ function LoginSignupPage() {
           <Feather name="settings" size={24} color="black" />
           <Text style={styles.optionTxt}>Settings</Text>
         </Pressable>
+        <Pressable style={styles.option}>
+          <AntDesign name="poweroff" size={24} color="black" />
+          <Text style={styles.optionTxt}>Log out</Text>
+        </Pressable>
       </ScrollView>
     </View>
   );
 }
 
-export default LoginSignupPage;
+export default UserPage;
 
 const styles = StyleSheet.create({
   container: {
@@ -83,7 +67,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     width: "90%",
-    marginBottom: "7%",
+    marginTop: "4%",
   },
   btnContainer: {
     flexDirection: "row",
@@ -94,23 +78,17 @@ const styles = StyleSheet.create({
   infoTitle: {
     width: "100%",
     marginTop: "6%",
-    fontSize: 21,
+    fontSize: 26,
     fontFamily: "Poppins_600SemiBold",
   },
-  signInfo: {
-    marginTop: "3%",
+  subTitle: {
     fontSize: 11,
     fontFamily: "Poppins_500Medium",
-    textAlign: "center",
-    paddingHorizontal: 5,
   },
-  facebookBtnContainer: {
-    backgroundColor: "#4267B2",
-  },
+  userSettingsContainer: { alignSelf: "stretch", paddingVertical: 19 },
   optionsContainer: {
     marginTop: "5%",
-    borderTopColor: "gray",
-    borderTopWidth: 0.5,
+
     paddingTop: "10%",
     alignSelf: "stretch",
   },

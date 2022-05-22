@@ -28,6 +28,7 @@ const ItemsPage = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
+      headerTitle: false,
       headerLeft: () => {
         return (
           <Pressable onPress={headerBackButtonHandler}>

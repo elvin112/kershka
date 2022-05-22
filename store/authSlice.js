@@ -6,10 +6,13 @@ export const authSlice = createSlice({
   initialState: {
     token: null,
     expirationDate: null,
+    emailAddress: null, // BARIS BARIS BARIS BARIS BARIS BARIS BARIS BARIS BARIS BARIS BARIS BARIS BARIS
     isLoggedIn: false,
   },
   reducers: {
-    authenticate: (state, token, expirationDate) => {
+    authenticate: (state, { token, expirationDate }) => {
+      console.log(token);
+      console.log(expirationDate);
       state.token = token;
       state.expirationDate = expirationDate;
       state.isLoggedIn = true;
