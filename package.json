@@ -14,6 +14,9 @@
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg|react-native-web|react-redux|react-native-snackbar-component|react-native-screens|react-native-safe-area-context|react-native-image-slider-box|react-native-gesture-handler|expo-status-bar|expo-font|expo-app-loading|axios|@reduxjs/.*|@react-native-async-storage/async-storage)"
+    ],
+    "setupFiles": [
+      "./jest/setup.js"
     ]
   },
   "dependencies": {
@@ -23,6 +26,7 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "@testing-library/react-native": "^9.1.0",
     "axios": "^0.27.2",
     "expo": "~44.0.0",
     "expo-app-loading": "~1.3.0",
@@ -44,7 +48,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "react-test-renderer": "^17.0.1"
+    "@testing-library/jest-native": "^4.0.5",
+    "react-test-renderer": "^17.0.1",
+    "redux-mock-store": "^1.5.4"
   },
   "private": true
 }
